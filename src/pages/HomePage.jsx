@@ -15,18 +15,19 @@ const HomePage = () => {
     setIsLoading(true);
     setError('');
     setShortUrl('');
-   
+
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/shorten`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({ originalUrl: originalUrl.trim() }),
       });
 
       const data = await response.json();
-      
+
       if (response.ok) {
         setShortUrl(data.shortUrl);
       } else {
@@ -35,7 +36,7 @@ const HomePage = () => {
     } catch (err) {
       setError('Network error. Please try again.');
     }
-    
+
     setIsLoading(false);
   };
 

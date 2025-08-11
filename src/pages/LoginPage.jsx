@@ -31,7 +31,6 @@ const LoginPage = ({ onLogin }) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials),
-        // This allows the browser to receive the httpOnly cookie from the server's response.
         credentials: 'include',
       });
 
